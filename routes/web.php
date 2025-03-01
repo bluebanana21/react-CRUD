@@ -17,5 +17,13 @@ Route::get('hello', function(){
     return Inertia::render('hello');
 });
 
+Route::get('/login', function(){
+    return Inertia::render('userAuth/login');
+});
+
+Route::get('/register',function(){
+    return Inertia::render('userAuth/register');
+});
+
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
