@@ -1,15 +1,49 @@
+'use client';
+
 import { AppSidebar } from '@/components/app-sidebar';
 import { ModeToggle } from '@/components/mode-toggle';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
-import { Separator } from '@/components/ui/separator';
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+import { columns, Payment } from '@/orders/columns';
+import { DataTable } from '@/orders/data-table';
+import { Separator } from '@radix-ui/react-separator';
+import { useEffect, useState } from 'react';
 
-export default function hello() {
+// async function getData(): Promise<Payment[]> {
+//     // Fetch data from Laravel API
+//     const response = await fetch('/api/payments'); // Update with actual API route
+//     return response.json();
+// }
+async function getData(): Promise<Payment[]> {
+    return [
+        {
+            id: '728ed52f',
+            amount: 100,
+            status: 'pending',
+            email: 'm@example.com',
+        },
+        {
+            id: '728ed52f',
+            amount: 100,
+            status: 'pending',
+            email: 'm@example.com',
+        },
+        // ...
+    ];
+}
+
+export default function Product() {
+    const [data, setData] = useState<Payment[]>([]);
+
+    useEffect(() => {
+        getData().then(setData).catch(console.error);
+    }, []);
+
     return (
         <SidebarProvider>
             <AppSidebar />
             <SidebarInset>
-                <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+                <header className="flex h-16 shrink-0 items-center gap-2">
                     <div className="flex items-center gap-2 px-4">
                         <SidebarTrigger className="-ml-1" />
                         <Separator orientation="vertical" className="mr-2 h-4" />
@@ -20,12 +54,12 @@ export default function hello() {
                                 </BreadcrumbItem>
                                 <BreadcrumbSeparator className="hidden md:block" />
                                 <BreadcrumbItem>
-                                    <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                                    <BreadcrumbPage>Order page</BreadcrumbPage>
                                 </BreadcrumbItem>
                             </BreadcrumbList>
                         </Breadcrumb>
                     </div>
-                    <ModeToggle/>
+                    <ModeToggle />
                 </header>
                 <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
                     <div className="grid auto-rows-min gap-4 md:grid-cols-3">
@@ -33,7 +67,9 @@ export default function hello() {
                         <div className="bg-muted/50 aspect-video rounded-xl" />
                         <div className="bg-muted/50 aspect-video rounded-xl" />
                     </div>
-                    <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
+                    <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min">
+                        <DataTable columns={columns} data={data} />
+                    </div>
                 </div>
             </SidebarInset>
         </SidebarProvider>

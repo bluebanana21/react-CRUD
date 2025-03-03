@@ -13,17 +13,25 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 });
 
-Route::get('hello', function(){
+Route::get('hello', function () {
     return Inertia::render('hello');
 });
 
-Route::get('/login', function(){
+Route::get('/login', function () {
     return Inertia::render('userAuth/login');
 });
 
-Route::get('/register',function(){
+Route::get('/register', function () {
     return Inertia::render('userAuth/register');
 });
 
-require __DIR__.'/settings.php';
-require __DIR__.'/auth.php';
+Route::get('/products', function () {
+    return Inertia::render('product');
+});
+
+Route::get('/orders', function () {
+    return Inertia::render('order');
+});
+
+require __DIR__ . '/settings.php';
+require __DIR__ . '/auth.php';
