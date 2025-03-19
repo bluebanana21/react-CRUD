@@ -29,6 +29,10 @@ Route::get('/products', function () {
     return Inertia::render('product');
 });
 
+// Route::get('/products/create', function () {
+//     return Inertia::render('products/form/create-product');
+// });
+
 Route::get('/orders', function () {
     return Inertia::render('order');
 });

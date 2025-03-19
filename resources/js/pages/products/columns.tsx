@@ -15,10 +15,11 @@ import { MoreHorizontal } from 'lucide-react';
 // You can use a Zod schema here if you want.
 export type Payment = {
     id: string;
-    product_id: string;
-    customer_id: string;
+    name: string;
+    price: number;
+    description: string;
+    category_id: string;
     product_qty: number;
-    created_at: string;
     // status: 'pending' | 'processing' | 'success' | 'failed';
 };
 
@@ -43,8 +44,8 @@ export const columns: ColumnDef<Payment>[] = [
         header: 'id',
     },
     {
-        accessorKey: 'product_id',
-        header: 'Product id',
+        accessorKey: 'name',
+        header: 'Name',
         // header: ({ column }) => {
         //     return (
         //         <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
@@ -55,8 +56,8 @@ export const columns: ColumnDef<Payment>[] = [
         // },
     },
     {
-        accessorKey: 'customer_id',
-        header: 'Customer id',
+        accessorKey: 'price',
+        header: 'Price',
     },
     {
         accessorKey: 'product_qty',

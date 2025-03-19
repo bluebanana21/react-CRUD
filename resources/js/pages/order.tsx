@@ -17,17 +17,41 @@ import { useEffect, useState } from 'react';
 async function getData(): Promise<Payment[]> {
     return [
         {
-            id: '728ed52f',
-            amount: 100,
-            status: 'pending',
-            email: 'm@example.com',
+            id: 'id8171',
+            product_id: 'pd8216',
+            customer_id: 'cd72161',
+            product_qty: 12,
+            created_at: '12/1/2025',
         },
         {
-            id: '728ed52f',
-            amount: 100,
-            status: 'pending',
-            email: 'm@example.com',
+            id: 'id8171',
+            product_id: 'pd8216',
+            customer_id: 'cd72161',
+            product_qty: 12,
+            created_at: '12/1/2025',
         },
+        {
+            id: 'id8171',
+            product_id: 'pd8216',
+            customer_id: 'cd72161',
+            product_qty: 12,
+            created_at: '12/1/2025',
+        },
+        {
+            id: 'id8171',
+            product_id: 'pd8216',
+            customer_id: 'cd72161',
+            product_qty: 12,
+            created_at: '12/1/2025',
+        },
+        {
+            id: 'id8171',
+            product_id: 'pd8216',
+            customer_id: 'cd72161',
+            product_qty: 12,
+            created_at: '12/1/2025',
+        },
+
         // ...
     ];
 }
@@ -67,7 +91,7 @@ export default function Product() {
                         <div className="bg-muted/50 aspect-video rounded-xl" />
                         <div className="bg-muted/50 aspect-video rounded-xl" />
                     </div>
-                    <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min">
+                    <div className="bg-muted/50 min-h-[50vh] flex-1 rounded-xl md:min-h-min">
                         <DataTable columns={columns} data={data} />
                     </div>
                 </div>

@@ -15,7 +15,8 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Plus } from 'lucide-react';
+import { Link, Plus, Route } from 'lucide-react';
+import CreateForm from "../pages/"
 import React from 'react';
 
 interface DataTableProps<TData, TValue> {
@@ -82,10 +83,13 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
                                 })}
                         </DropdownMenuContent>
                     </DropdownMenu>
-                    {/* <Button>
-                        New Order
+                    <Button>
+                        <Route path="" element={</>}>
+                            
+                        </Route>
+                        New Product
                         <Plus />
-                    </Button> */}
+                    </Button>
                 </div>
             </div>
             <div className="rounded-md border">

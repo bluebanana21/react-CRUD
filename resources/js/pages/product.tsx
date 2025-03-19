@@ -1,10 +1,49 @@
-import { AppSidebar } from "@/components/app-sidebar";
-import { ModeToggle } from "@/components/mode-toggle";
-import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage } from "@/components/ui/breadcrumb";
-import { SidebarProvider, SidebarInset, SidebarTrigger } from "@/components/ui/sidebar";
-import { Separator } from "@radix-ui/react-separator";
+import { AppSidebar } from '@/components/app-sidebar';
+import { ModeToggle } from '@/components/mode-toggle';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/components/ui/breadcrumb';
+import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+import { Payment, columns } from '@/products/columns';
+import { DataTable } from '@/products/data-table';
+import { Separator } from '@radix-ui/react-separator';
+import { useEffect, useState } from 'react';
+
+async function getData(): Promise<Payment[]> {
+    return [
+        {
+            id: 'id8171',
+            name: 'G-fuel',
+            price: 20,
+            description: 'dsafgd',
+            category_id: '1',
+            product_qty: 12,
+        },
+        {
+            id: 'id8171',
+            name: 'G-fuel',
+            price: 20,
+            description: 'dsafgd',
+            category_id: '1',
+            product_qty: 12,
+        },
+        {
+            id: 'id8171',
+            name: 'G-fuel',
+            price: 20,
+            description: 'dsafgd',
+            category_id: '1',
+            product_qty: 12,
+        },
+        // ...
+    ];
+}
 
 export default function product() {
+    const [data, setData] = useState<Payment[]>([]);
+
+    useEffect(() => {
+        getData().then(setData).catch(console.error);
+    }, []);
+
     return (
         <SidebarProvider>
             <AppSidebar />
@@ -33,7 +72,9 @@ export default function product() {
                         <div className="bg-muted/50 aspect-video rounded-xl" />
                         <div className="bg-muted/50 aspect-video rounded-xl" />
                     </div>
-                    <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
+                    <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min">
+                        <DataTable columns={columns} data={data} />
+                    </div>
                 </div>
             </SidebarInset>
         </SidebarProvider>
